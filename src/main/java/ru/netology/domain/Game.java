@@ -17,20 +17,24 @@ public class Game {
     }
 
     public int round(String playerName1, String playerName2) {
-        if ((findByName(playerName1) == null) && (findByName(playerName2) == null)) {
+        Player name1 = findByName(playerName1);
+        Player name2 = findByName(playerName2);
+
+
+        if ((name1 == null) && (name2 == null)) {
             throw new NotRegisteredException("Оба игрока не зарегистрированы");
         }
 
-        if (findByName(playerName1) == null) {
+        if (name1 == null) {
             throw new NotRegisteredException("Игрок с именем " + playerName1 + " не зарегестрирован");
         }
-        if (findByName(playerName2) == null) {
+        if (name2 == null) {
             throw new NotRegisteredException("Игрок с именем " + playerName2 + " не зарегестрирован");
         }
 
-        if (findByName(playerName1).getStrength() > findByName(playerName2).getStrength()) {
+        if (name1.getStrength() > name2.getStrength()) {
             return 1;
-        } else if (findByName(playerName1).getStrength() < findByName(playerName2).getStrength()) {
+        } else if (name1.getStrength() < name2.getStrength()) {
             return 2;
         }
         return 0;
